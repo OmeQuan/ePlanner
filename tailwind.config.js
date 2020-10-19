@@ -21,6 +21,7 @@ module.exports = {
       colors: {
         creme: '#F3F1EB',
         darkblue: '#3D6EA5',
+        darkred: '#C05855',
       },
     },
   },

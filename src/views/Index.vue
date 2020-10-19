@@ -5,9 +5,14 @@
       <div v-for="event in events" :key="event.id">
         <p>{{ event.title }}</p>
       </div>
-
-      <router-link :to="{ name: 'events.create' }">New event</router-link>
     </div>
+    <router-link :to="{ name: 'events.create' }" class="bg">
+      <BaseButton
+        class="fixed bottom-0 right-0 mb-8 mr-8"
+        text="new event"
+        :to="{ name: 'events.create' }"
+      />
+    </router-link>
   </div>
 </template>
 

@@ -1,19 +1,20 @@
 <template>
-  <button class="button w-full text-white text-lg font-bold">{{ text }}</button>
+  <button class="button w-auto px-4 text-cream text-lg bg-darkblue">
+    {{ text }}
+  </button>
 </template>
 
 <script>
 export default {
   props: {
-    text: String
-  }
-};
+    text: String,
+  },
+}
 </script>
 
 <style scoped>
 .button {
-  background: #4a57fc;
-  border-radius: 12px;
-  height: 56px;
+  border-radius: 8px;
+  height: 52px;
 }
 </style>

@@ -11,6 +11,9 @@ export default {
         })
       })
   },
+  addGuestsEvent(eventId, guests) {
+    return firestore.collection(`events/${eventId}/guests`).add(guests)
+  },
   createEvent(event) {
     return firestore.collection(`events`).add(event)
   },

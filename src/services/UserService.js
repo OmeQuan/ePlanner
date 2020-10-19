@@ -5,7 +5,6 @@ export default {
     return firestore
       .collection(`users`)
       .where('name', '==', userId)
-      .limit(1)
       .get()
       .then((querySnapshot) => {
         const [user] = querySnapshot.docs.map((doc) => {
