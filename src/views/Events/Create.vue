@@ -43,14 +43,17 @@ a<template>
 
 <script>
 import { required, maxLength, alphaNum } from 'vuelidate/lib/validators'
+import { Timestamp } from '../../firebase'
 
 export default {
   data() {
     return {
       event: {
-        title: '',
+        adminId: '4uLzNcL4zTWdVIKJuNy0',
+        archived: false,
         eventDate: null,
         location: '',
+        title: '',
       },
     }
   },
@@ -66,8 +69,7 @@ export default {
       },
       location: {
         required,
-        alphaNum,
-        maxLength: maxLength(12),
+        maxLength: maxLength(32),
       },
     },
   },
@@ -76,10 +78,13 @@ export default {
       this.$v.$touch()
 
       if (!this.$v.$invalid) {
-        console.log('succes')
-        console.log(this.event)
+        console.log('Yey!')
+        this.$store.dispatch('event/createEvent', {
+          ...this.event,
+          createdAt: Timestamp.now(),
+        })
       } else {
-        console.log('Not good')
+        console.log('Nie goed')
       }
     },
   },

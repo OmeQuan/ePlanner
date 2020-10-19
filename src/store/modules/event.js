@@ -33,6 +33,12 @@ const actions = {
         console.log('ERROR ' + error)
       })
   },
+  createEvent({ rootState }, event) {
+    console.log(rootState.user.user.id)
+    EventService.createEvent(event).catch((error) => {
+      console.log('ERROR: ' + error)
+    })
+  },
   bindEvents: firestoreAction(({ bindFirestoreRef }) => {
     return bindFirestoreRef('events', firestore.collection('events'))
   }),

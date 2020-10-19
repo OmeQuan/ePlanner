@@ -1,10 +1,15 @@
 <template>
-  <div class="field flex border-b border-gray-600 pb-2 mb-8">
-    <label class="text-white text-lg w-20" v-if="label" :for="label" :class="{ 'text-gray-600': value }">
+  <div class="flex pb-2 mb-8 flex-col ">
+    <label
+      class="text-cream text-sm w-20"
+      v-if="label"
+      :for="label"
+      :class="{ 'text-gray-600': value }"
+    >
       {{ label }}
     </label>
     <input
-      class="ml-8 flex-grow bg-transparent text-white text-lg focus:outline-none placeholder-gray-600"
+      class="bg-transparent text-cream text-lg placeholder-gray-600 w-64"
       @input="updateValue"
       v-bind="$attrs"
       v-on="listeners"
@@ -20,37 +25,29 @@ export default {
   props: {
     label: {
       type: String,
-      default: ""
+      default: '',
     },
-    value: [String, Number]
+    value: [String, Number],
   },
   computed: {
     listeners() {
       return {
         ...this.$listeners,
-        input: this.updateValue
-      };
-    }
+        input: this.updateValue,
+      }
+    },
   },
   methods: {
     updateValue(event) {
-      this.$emit("input", event.target.value);
-    }
-  }
-};
+      this.$emit('input', event.target.value)
+    },
+  },
+}
 </script>
 
 <style scoped>
 label {
   transition: color 0.3s;
-}
-
-.field {
-  width: calc(100vw - 1rem);
-}
-
-.error {
-  border-bottom: 1px solid #ff3b30;
 }
 
 .error > label {

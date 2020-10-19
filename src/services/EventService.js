@@ -11,4 +11,7 @@ export default {
         })
       })
   },
+  createEvent(event) {
+    return firestore.collection(`events`).add(event)
+  },
 }
