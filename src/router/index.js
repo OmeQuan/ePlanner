@@ -11,6 +11,12 @@ const routes = [
     component: Index,
   },
   {
+    path: '/event/create',
+    name: 'events.create',
+    component: () =>
+      import(/* webpackChunkName: "about" */ '../views/Events/Create.vue'),
+  },
+  {
     path: '/home',
     name: 'About',
     component: () =>

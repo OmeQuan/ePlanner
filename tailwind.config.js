@@ -20,6 +20,7 @@ module.exports = {
     extend: {
       colors: {
         creme: '#F3F1EB',
+        darkblue: '#3D6EA5',
       },
     },
   },

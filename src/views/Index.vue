@@ -3,7 +3,7 @@
     <div class="w-full flex flex-col ">
       <h1 class="text-4xl font-semibold">Events</h1>
       <div v-for="event in events" :key="event.id">
-        <p>{{ event.name }}</p>
+        <p>{{ event.title }}</p>
       </div>
     </div>
   </div>
@@ -17,6 +17,7 @@ export default {
 
   async created() {
     await this.$store.dispatch('event/bindEvents')
+    this.$store.dispatch('user/fetchUser')
   },
   computed: {
     ...mapState('event', ['events']),
