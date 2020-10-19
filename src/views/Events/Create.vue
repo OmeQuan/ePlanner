@@ -32,13 +32,13 @@ a<template>
         <div class="flex justify-between">
           <router-link :to="{ name: 'index' }">
             <button
-              class="bg-darkred hover:bg-blue-700  py-2 px-4 rounded mr-4"
+              class="bg-btn-red hover:bg-blue-700  py-2 px-4 rounded mr-4"
             >
               Cancel <BaseIcon name="x" strokeWidth="2" />
             </button>
           </router-link>
           <button
-            class="bg-darkblue hover:bg-blue-700  py-2 px-4 rounded"
+            class="bg-btn-blue hover:bg-blue-700  py-2 px-4 rounded"
             type="submit"
           >
             Next <BaseIcon name="arrow-right" strokeWidth="2" />
