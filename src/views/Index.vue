@@ -10,7 +10,7 @@
         </div>
 
         <router-link :to="{ name: 'events.create' }"
-            ><button class="bg-highlight rounded-full w-14 h-14 fixed bottom-0 right-0 mb-8 mr-8">
+            ><button class="bg-highlight rounded-full w-14 h-14 fixed bottom-0 right-0 mb-8 mr-8 new-btn">
                 <BaseIcon class="w-8 h-8" name="plus" strokeWidth="2" />
             </button>
         </router-link>
@@ -36,4 +36,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.new-btn {
+    box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.16);
+}
+</style>
