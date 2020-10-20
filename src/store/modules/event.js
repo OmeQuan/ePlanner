@@ -17,6 +17,9 @@ const mutations = {
     SET_EVENTS(state, events) {
         state.events = events
     },
+    SET_EVENT(state, event) {
+        state.event = event
+    },
     ADD_EVENT(state, event) {
         state.events.push(event)
     },
@@ -33,15 +36,21 @@ const actions = {
                 console.log("ERROR " + error)
             })
     },
+    fetchEvent({ commit }, id) {
+        return EventService.getEvent(id).then(response => {
+            commit("SET_EVENT", response)
+            return response
+        })
+    },
     createEvent({ rootState }, event) {
         console.log(rootState)
         EventService.createEvent(event).catch(error => {
             console.log("ERROR: " + error)
         })
     },
-    testEvent({ rootState }, event) {
+    testEvent({ context }, event) {
         console.log(event)
-        console.log(rootState)
+        console.log(context)
     },
     bindEvents: firestoreAction(({ bindFirestoreRef }) => {
         return bindFirestoreRef("events", firestore.collection("events").where("archived", "==", false))

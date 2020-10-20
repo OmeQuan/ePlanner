@@ -20,6 +20,14 @@ a<template>
                     :class="{ error: $v.event.eventDate.$error }"
                     @blur="$v.event.eventDate.$touch()"
                 />
+                <BaseInput
+                    label="Info"
+                    type="text"
+                    placeholder="add"
+                    v-model="event.info"
+                    :class="{ error: $v.event.info.$error }"
+                    @blur="$v.event.info.$touch()"
+                />
 
                 <BaseInput
                     label="Location"
@@ -57,6 +65,8 @@ export default {
                 eventDate: null,
                 location: "",
                 title: "",
+                info: "",
+                host: "quan",
             },
         }
     },
@@ -73,6 +83,10 @@ export default {
                 required,
                 maxLength: maxLength(32),
             },
+            info: {
+                required,
+                maxLength: maxLength(500),
+            },
         },
     },
     methods: {
@@ -80,11 +94,17 @@ export default {
             this.$v.$touch()
 
             if (!this.$v.$invalid) {
-                this.$store.dispatch("event/createEvent", { ...this.event, createdAt: Timestamp.now() })
-                //this.$store.dispatch("event/testEvent", { ...this.event, createdAt: Timestamp.now() })
+                //this.$store.dispatch("event/createEvent", { ...this.event, createdAt: Timestamp.now() })
+                this.$store.dispatch("event/testEvent", { ...this.event, createdAt: Timestamp.now() })
             } else {
                 console.log("Nie goed")
             }
+        },
+        getAdminId() {
+            //TODO:
+        },
+        getHostName() {
+            //TODO
         },
     },
 }
