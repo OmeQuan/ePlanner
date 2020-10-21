@@ -13,12 +13,16 @@ const mutations = {
 
 const actions = {
   createGuestList({ rootState }, guests) {
-    console.log(guests)
     guests.forEach(guest => {
-      console.log(guest)
       GuestService.addGuest(rootState.event.event.id, guest).catch(error => {
         console.log("ERROR: " + error)
       })
+    })
+  },
+  fetchGuestList({ commit }, id) {
+    return GuestService.getGuestList(id).then(response => {
+      commit("SET_GUESTS", response)
+      return response
     })
   },
 }

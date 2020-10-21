@@ -29,7 +29,14 @@
         <h3 class="text-opacity-50 text-creme text-sm font-thin">Host</h3>
         <h2 class="text-creme">{{ event.host }}</h2>
       </div>
+      <br />
+      <router-link :to="{ name: 'event.guests' }">
+        <button class="bg-btn-blue hover:bg-blue-700  py-2 px-4 rounded">
+          Guest list <BaseIcon name="users" strokeWidht="2" class="ml-2" />
+        </button>
+      </router-link>
     </div>
+    <div></div>
   </div>
 </template>
 

@@ -50,6 +50,23 @@ const routes = [
         })
     },
   },
+  {
+    path: "/events/:id/guests",
+    name: "event.guests",
+    component: () => import("../views/Events/Guests/Index.vue"),
+    props: true,
+    beforeEnter(routeTo, routeFrom, next) {
+      store
+        .dispatch("guest/fetchGuestList", routeTo.params.id)
+        .then(guests => {
+          routeTo.params.guests = guests
+          next()
+        })
+        .catch(error => {
+          console.log("ERROR: " + error)
+        })
+    },
+  },
 ]
 
 const router = new VueRouter({
