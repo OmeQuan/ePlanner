@@ -67,6 +67,23 @@ const routes = [
         })
     },
   },
+  {
+    path: "/events/:id/guests/edit",
+    name: "event.guests.edit",
+    component: () => import("../views/Events/Guests/Edit.vue"),
+    props: true,
+    beforeEnter(routeTo, routeFrom, next) {
+      store
+        .dispatch("friend/fetchFriends")
+        .then(friends => {
+          routeTo.params.friends = friends
+          next()
+        })
+        .catch(error => {
+          console.log("ERROR: " + error)
+        })
+    },
+  },
 ]
 
 const router = new VueRouter({

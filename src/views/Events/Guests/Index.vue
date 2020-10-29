@@ -17,17 +17,26 @@
           <td v-if="guest.present == false"><BaseIcon name="x" strokeWidth="2" /></td>
         </tr>
       </table>
+
+      <router-link :to="{ name: 'event.guests.edit', params: { id: event.id } }">
+        <BaseIcon name="plus" strokeWidth="2" />
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex"
+
 export default {
   props: {
     guests: {
       type: Array,
       required: true,
     },
+  },
+  computed: {
+    ...mapState("event", ["event"]),
   },
 }
 </script>

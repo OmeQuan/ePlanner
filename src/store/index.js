@@ -6,6 +6,7 @@ import { vuexfireMutations } from "vuexfire"
 import event from "@/store/modules/event"
 import user from "@/store/modules/user"
 import guest from "@/store/modules/guest"
+import friend from "@/store/modules/friend"
 
 Vue.use(Vuex)
 
@@ -19,5 +20,6 @@ export default new Vuex.Store({
     event,
     user,
     guest,
+    friend,
   },
 })
