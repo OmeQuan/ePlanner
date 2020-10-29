@@ -1,5 +1,9 @@
 <template>
   <div class="container mx-auto px-6">
+    <router-link :to="{ name: 'index' }">
+      <BaseIcon name="x" strokeWidth="2" />
+    </router-link>
+
     <div class="w-full flex flex-col ">
       <h1 class="text-4xl font-semibold mb-8">Guest list</h1>
       <table>
@@ -21,7 +25,7 @@
 export default {
   props: {
     guests: {
-      type: Object,
+      type: Array,
       required: true,
     },
   },

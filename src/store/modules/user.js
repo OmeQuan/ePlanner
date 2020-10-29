@@ -21,7 +21,7 @@ const mutations = {
 
 const actions = {
   fetchUser({ commit }) {
-    return UserService.getUser("quan")
+    return UserService.getUser("Coen Breg")
       .then(response => {
         commit("SET_USER", response)
       })

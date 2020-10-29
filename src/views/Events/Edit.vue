@@ -3,29 +3,24 @@
 </template>
 
 <script>
-import { Timestamp } from "../../firebase"
-
 export default {
   data() {
     return {
       guests: [
         {
           name: "guest1",
-          present: false,
-          guestId: 1,
-          createdAt: Timestamp.now(),
+          status: "absent",
+          guestId: "1",
         },
         {
           name: "guest2",
-          present: false,
-          guestId: 2,
-          createdAt: Timestamp.now(),
+          status: "absent",
+          guestId: "2",
         },
         {
           name: "guest3",
-          present: false,
-          guestId: 3,
-          createdAt: Timestamp.now(),
+          status: "absent",
+          guestId: "3",
         },
       ],
     }
