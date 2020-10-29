@@ -53,7 +53,7 @@ const routes = [
   {
     path: "/events/:id/guests",
     name: "event.guests",
-    component: () => import("../views/Events/Guests/Index.vue"),
+    component: () => import("../views/Guests/Index.vue"),
     props: true,
     beforeEnter(routeTo, routeFrom, next) {
       store
@@ -70,7 +70,7 @@ const routes = [
   {
     path: "/events/:id/guests/edit",
     name: "event.guests.edit",
-    component: () => import("../views/Events/Guests/Edit.vue"),
+    component: () => import("../views/Guests/Edit.vue"),
     props: true,
     beforeEnter(routeTo, routeFrom, next) {
       store
