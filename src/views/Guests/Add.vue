@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto px-6">
-    <router-link :to="{ name: 'index' }">
+    <router-link :to="{ name: 'event.guests', params: { id: event.id } }">
       <BaseIcon name="x" strokeWidth="2" />
     </router-link>
 
@@ -51,6 +51,8 @@ export default {
         this.guestlist.forEach(guest => {
           this.$store.dispatch("event/addEvent", { ...this.payload, event: this.eventInfo, guestId: guest.userId })
         })
+
+        this.$router.push({ name: "event.guests", params: { id: this.event.id } })
       } else {
         console.log("none selected")
       }

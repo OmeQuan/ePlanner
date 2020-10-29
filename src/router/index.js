@@ -35,7 +35,7 @@ const routes = [
   },
   {
     path: "/events/:id",
-    name: "events.index",
+    name: "event.index",
     component: () => import("../views/Events/Index.vue"),
     props: true,
     beforeEnter(routeTo, routeFrom, next) {

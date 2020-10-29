@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto px-6">
-    <router-link :to="{ name: 'index' }">
+    <router-link :to="{ name: 'event.index', params: { id: event.id } }">
       <BaseIcon name="x" strokeWidth="2" />
     </router-link>
 
@@ -17,9 +17,16 @@
         </tr>
       </table>
 
-      <router-link :to="{ name: 'event.guests.add', params: { id: event.id } }">
-        <p>Add new guests <BaseIcon name="plus" strokeWidth="2" /></p>
-      </router-link>
+      <div v-if="guests.length == 0" class="mt-2 text-center opacity-50">
+        <h1>No guests selected yet</h1>
+      </div>
+      <div class="mt-4">
+        <router-link :to="{ name: 'event.guests.add', params: { id: event.id } }">
+          <button class="bg-btn-blue hover:bg-blue-700  py-2 px-4 rounded">
+            Add guests <BaseIcon name="plus" strokeWidth="2" class="ml-2" />
+          </button>
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
