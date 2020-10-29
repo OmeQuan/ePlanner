@@ -28,4 +28,7 @@ export default {
     console.log(event)
     return firestore.collection(`events`).add(event)
   },
+  addEvent(payload) {
+    return firestore.collection(`users/${payload.guestId}/events`).add(payload.event)
+  },
 }

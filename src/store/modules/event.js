@@ -48,9 +48,11 @@ const actions = {
       console.log("ERROR: " + error)
     })
   },
-  testEvent({ context }, event) {
-    console.log(event)
-    console.log(context)
+  addEvent({ rootState }, payload) {
+    console.log(rootState)
+    EventService.addEvent(payload).catch(error => {
+      console.log("ERROR: " + error)
+    })
   },
   bindEvents: firestoreAction(({ bindFirestoreRef }, userId) => {
     return bindFirestoreRef("events", firestore.collection(`users/${userId}/events`))

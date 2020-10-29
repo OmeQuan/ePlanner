@@ -68,9 +68,9 @@ const routes = [
     },
   },
   {
-    path: "/events/:id/guests/edit",
-    name: "event.guests.edit",
-    component: () => import("../views/Guests/Edit.vue"),
+    path: "/events/:id/guests/add",
+    name: "event.guests.add",
+    component: () => import("../views/Guests/Add.vue"),
     props: true,
     beforeEnter(routeTo, routeFrom, next) {
       store

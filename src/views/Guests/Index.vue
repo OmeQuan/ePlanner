@@ -9,17 +9,16 @@
       <table>
         <tr class="text-left border-b border-highlight">
           <th>Name</th>
-          <th>Present</th>
+          <th>Status</th>
         </tr>
         <tr v-for="guest in guests" :key="guest.id">
           <td>{{ guest.name }}</td>
-          <td v-if="guest.present == true"><BaseIcon name="check" strokeWidth="2" /></td>
-          <td v-if="guest.present == false"><BaseIcon name="x" strokeWidth="2" /></td>
+          <td>{{ guest.status }}</td>
         </tr>
       </table>
 
-      <router-link :to="{ name: 'event.guests.edit', params: { id: event.id } }">
-        <BaseIcon name="plus" strokeWidth="2" />
+      <router-link :to="{ name: 'event.guests.add', params: { id: event.id } }">
+        <p>Add new guests <BaseIcon name="plus" strokeWidth="2" /></p>
       </router-link>
     </div>
   </div>

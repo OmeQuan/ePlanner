@@ -1,4 +1,6 @@
 import GuestService from "@/services/GuestService"
+//import EventService from "@/services/EventService"
+
 const state = {
   guests: [],
 }
