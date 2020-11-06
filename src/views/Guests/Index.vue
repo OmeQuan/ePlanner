@@ -1,24 +1,33 @@
 <template>
   <div class="container mx-auto px-6">
-    <router-link :to="{ name: 'event.index', params: { id: event.id } }">
-      <BaseIcon name="x" strokeWidth="2" />
-    </router-link>
-
     <div class="w-full flex flex-col ">
-      <h1 class="text-4xl font-semibold mb-8">Guest list</h1>
-      <table>
-        <tr class="text-left border-b border-highlight">
-          <th>Name</th>
-          <th>Status</th>
-        </tr>
-        <tr v-for="guest in guests" :key="guest.id">
-          <td>{{ guest.name }}</td>
-          <td>{{ guest.status }}</td>
-        </tr>
-      </table>
-
-      <div v-if="guests.length == 0" class="mt-2 text-center opacity-50">
-        <h1>No guests selected yet</h1>
+      <div class="flex flex-row">
+        <div class="flex-grow">
+          <h1 class="text-4xl font-semibold ">Guestlist</h1>
+        </div>
+        <div class="py-4">
+          <router-link :to="{ name: 'event.index', params: { id: event.id } }">
+            <BaseIcon name="x" strokeWidth="2" />
+          </router-link>
+        </div>
+      </div>
+      <div class="mb-4">
+        <h4 class="text-creme opacity-75 text-sm font-light -mt-2">{{ event.title }}</h4>
+      </div>
+      <div v-if="guests.length == 0">
+        <h1 class="text-center text-3xl opacity-75 text-creme">No Guests yet</h1>
+      </div>
+      <div v-if="guests.length != 0">
+        <table>
+          <tr class="text-left border-b border-highlight">
+            <th>Name</th>
+            <th>Status</th>
+          </tr>
+          <tr v-for="guest in guests" :key="guest.id">
+            <td>{{ guest.name }}</td>
+            <td>{{ guest.status }}</td>
+          </tr>
+        </table>
       </div>
       <div class="mt-4">
         <router-link :to="{ name: 'event.guests.add', params: { id: event.id } }">

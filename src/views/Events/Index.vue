@@ -45,11 +45,19 @@
         <h2 class="text-creme">{{ event.eventTask }}</h2>
       </div>
       <br />
-      <router-link :to="{ name: 'event.guests' }">
-        <button class="bg-btn-blue hover:bg-blue-700  py-2 px-4 rounded">
-          Guest list <BaseIcon name="users" strokeWidht="2" class="ml-2" />
-        </button>
-      </router-link>
+      <div class="flex ">
+        <div class="flex-grow">
+          <button class=" bg-btn-green hover:bg-blue-700  py-2 px-4 rounded">
+            Status <BaseIcon name="check" strokeWidht="2" class="ml-2" />
+          </button>
+        </div>
+
+        <div class="flex-grow text-right">
+          <router-link :to="{ name: 'event.guests' }" class="">
+            <h3 class="py-2 px-4">Guestlist <BaseIcon name="chevron-right" strokeWidht="2" class="ml-2" /></h3>
+          </router-link>
+        </div>
+      </div>
     </div>
     <div></div>
   </div>
