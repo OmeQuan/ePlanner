@@ -55,7 +55,8 @@ const actions = {
     })
   },
   bindEvents: firestoreAction(({ bindFirestoreRef }, userId) => {
-    return bindFirestoreRef("events", firestore.collection(`users/${userId}/events`))
+    console.log(userId)
+    return bindFirestoreRef("events", firestore.collection(`events`))
   }),
 }
 

@@ -6,11 +6,11 @@
       <div class="flex">
         <div class="flex flex-col">
           <h3 class="text-opacity-50 text-creme text-sm font-thin">Date</h3>
-          <h3>{{ date }}</h3>
+          <h3>{{ event.eventDate }}</h3>
         </div>
         <div class="flex flex-col ml-2">
           <h3 class="text-opacity-50 text-creme text-sm">Time</h3>
-          <h3 class="font-medium">{{ time }}</h3>
+          <h3 class="font-medium">{{ event.startTime }}</h3>
         </div>
       </div>
     </div>
@@ -22,25 +22,7 @@ export default {
   props: {
     event: Object,
   },
-  data() {
-    return {
-      date: this.computedDate(),
-      time: this.computedTime(),
-    }
-  },
   computed: {},
-  methods: {
-    computedDate() {
-      var resp = this.event.dateTime.split("T", 2)
-      var date = resp[0]
-      return date
-    },
-    computedTime() {
-      var resp = this.event.dateTime.split("T", 2)
-      var time = resp[1]
-      return time
-    },
-  },
 }
 </script>
 
