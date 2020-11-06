@@ -1,25 +1,93 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Index from '../views/Index.vue'
+import Vue from "vue"
+import VueRouter from "vue-router"
+import store from "../store"
+import Index from "../views/Index.vue"
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
+    path: "/",
+    name: "index",
     component: Index,
   },
   {
-    path: '/home',
-    name: 'About',
-    component: () =>
-      import(/* webpackChunkName: "about" */ '../views/Events/Index.vue'),
+    path: "/event/create",
+    name: "events.create",
+    component: () => import("../views/Events/Create.vue"),
+  },
+  {
+    path: "/events/:id/edit",
+    name: "events.edit",
+    component: () => import("../views/Events/Edit.vue"),
+    props: true,
+    beforeEnter(routeTo, routeFrom, next) {
+      store
+        .dispatch("event/fetchEvent", routeTo.params.id)
+        .then(event => {
+          routeTo.params.event = event
+          next()
+        })
+        .catch(error => {
+          console.log("ERROR: " + error)
+        })
+    },
+  },
+  {
+    path: "/events/:id",
+    name: "event.index",
+    component: () => import("../views/Events/Index.vue"),
+    props: true,
+    beforeEnter(routeTo, routeFrom, next) {
+      store
+        .dispatch("event/fetchEvent", routeTo.params.id)
+        .then(event => {
+          routeTo.params.event = event
+          next()
+        })
+        .catch(error => {
+          console.log("ERROR: " + error)
+        })
+    },
+  },
+  {
+    path: "/events/:id/guests",
+    name: "event.guests",
+    component: () => import("../views/Guests/Index.vue"),
+    props: true,
+    beforeEnter(routeTo, routeFrom, next) {
+      store
+        .dispatch("guest/fetchGuestList", routeTo.params.id)
+        .then(guests => {
+          routeTo.params.guests = guests
+          next()
+        })
+        .catch(error => {
+          console.log("ERROR: " + error)
+        })
+    },
+  },
+  {
+    path: "/events/:id/guests/add",
+    name: "event.guests.add",
+    component: () => import("../views/Guests/Add.vue"),
+    props: true,
+    beforeEnter(routeTo, routeFrom, next) {
+      store
+        .dispatch("friend/fetchFriends")
+        .then(friends => {
+          routeTo.params.friends = friends
+          next()
+        })
+        .catch(error => {
+          console.log("ERROR: " + error)
+        })
+    },
   },
 ]
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
   routes,
 })

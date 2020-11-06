@@ -4,8 +4,11 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 import '@/assets/css/tailwind.css'
+import Vuelidate from 'vuelidate'
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
+
+Vue.use(Vuelidate)
 
 const requireComponent = require.context(
   // The relative path of the components folder
