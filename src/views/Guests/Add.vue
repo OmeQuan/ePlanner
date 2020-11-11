@@ -20,18 +20,20 @@
         </p>
         <p class="mt-2">
           Invite link: <br />
-          <a :href="inviteLink" class="text-blue-400 font-light font-sans text-xs">
+          <a :href="inviteLink" class="text-blue-400 font-light font-sans text-xs" id="link" ref="mylink">
             {{ inviteLink }}
           </a>
         </p>
       </div>
       <div class="mt-4">
-        <div class="flex my-4">
-          <BaseIcon name="message-circle" strokeWidth="1" class="h-8 w-8" />
-          <h2 class="text-lg ml-4 mt-1">Share link via WhatsApp</h2>
+        <div class=" my-4">
+          <a class="flex" :href="`whatsapp://send?text=${inviteLink}`" data-action="share/whatsapp/share"
+            ><BaseIcon name="message-circle" strokeWidth="1" class="h-8 w-8" />
+            <h2 class="text-lg ml-4 mt-1">Share link via WhatsApp</h2></a
+          >
         </div>
         <hr class="ml-12 opacity-50" />
-        <div class="flex my-4">
+        <div class="flex my-4" @click="copyLink">
           <BaseIcon name="copy" strokeWidth="1" class="h-8 w-8" />
           <h2 class="text-lg ml-4 mt-1">Copy link</h2>
         </div>
@@ -47,12 +49,17 @@ import InviteService from "@/services/InviteService"
 export default {
   data() {
     return {
-      inviteLink: "",
+      inviteLink: "bruh",
       invite: {
         eventId: "TestId",
       },
-      test: "test",
     }
+  },
+  methods: {
+    copyLink() {
+      this.$clipboard(this.inviteLink)
+      alert("Link copied")
+    },
   },
   computed: {
     ...mapState("event", ["event"]),

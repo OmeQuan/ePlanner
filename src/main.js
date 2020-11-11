@@ -1,25 +1,27 @@
-import Vue from 'vue'
-import App from './App.vue'
-import './registerServiceWorker'
-import router from './router'
-import store from './store'
-import '@/assets/css/tailwind.css'
-import Vuelidate from 'vuelidate'
-import upperFirst from 'lodash/upperFirst'
-import camelCase from 'lodash/camelCase'
+import Vue from "vue"
+import App from "./App.vue"
+import "./registerServiceWorker"
+import router from "./router"
+import store from "./store"
+import "@/assets/css/tailwind.css"
+import Vuelidate from "vuelidate"
+import Clipboard from "v-clipboard"
+import upperFirst from "lodash/upperFirst"
+import camelCase from "lodash/camelCase"
 
 Vue.use(Vuelidate)
+Vue.use(Clipboard)
 
 const requireComponent = require.context(
   // The relative path of the components folder
-  './components',
+  "./components",
   // Whether or not to look in subfolders
   true,
   // The regular expression used to match base component filenames
   /Base[A-Z]\w+\.(vue|js)$/
 )
 
-requireComponent.keys().forEach((fileName) => {
+requireComponent.keys().forEach(fileName => {
   // Get component config
   const componentConfig = requireComponent(fileName)
 
@@ -28,9 +30,9 @@ requireComponent.keys().forEach((fileName) => {
     camelCase(
       // Gets the file name regardless of folder depth
       fileName
-        .split('/')
+        .split("/")
         .pop()
-        .replace(/\.\w+$/, '')
+        .replace(/\.\w+$/, "")
     )
   )
 
@@ -49,5 +51,5 @@ Vue.config.productionTip = false
 new Vue({
   router,
   store,
-  render: (h) => h(App),
-}).$mount('#app')
+  render: h => h(App),
+}).$mount("#app")
