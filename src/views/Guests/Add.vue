@@ -50,7 +50,7 @@ import { Timestamp } from "../../firebase"
 export default {
   data() {
     return {
-      inviteLink: "bruh",
+      inviteLink: "Loading...",
       invite: {},
     }
   },
