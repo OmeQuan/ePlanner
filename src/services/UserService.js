@@ -4,14 +4,14 @@ export default {
   getUser(userId) {
     return firestore
       .collection(`users`)
-      .where("name", "==", userId)
+      .doc(userId)
       .get()
-      .then(querySnapshot => {
-        const [user] = querySnapshot.docs.map(doc => {
+      .then(doc => {
+        if (doc.exists) {
           return { ...{ id: doc.id }, ...doc.data() }
-        })
-
-        return user
+        } else {
+          console.log("User not found")
+        }
       })
   },
   getUsers() {

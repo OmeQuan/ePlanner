@@ -28,7 +28,7 @@ export default {
   },
   async created() {
     await this.$store.dispatch("event/bindEvents", "4uLzNcL4zTWdVIKJuNy0")
-    this.$store.dispatch("user/fetchUser")
+    this.$store.dispatch("user/fetchUser", "4uLzNcL4zTWdVIKJuNy0")
   },
   computed: {
     ...mapState("event", ["events"]),

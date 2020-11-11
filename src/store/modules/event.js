@@ -39,6 +39,7 @@ const actions = {
   fetchEvent({ commit }, id) {
     return EventService.getEvent(id).then(response => {
       commit("SET_EVENT", response)
+      localStorage.setItem("eventId", response.id)
       return response
     })
   },

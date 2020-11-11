@@ -20,10 +20,13 @@ const mutations = {
 }
 
 const actions = {
-  fetchUser({ commit }) {
-    return UserService.getUser("Coen Breg")
+  fetchUser({ commit }, userId) {
+    return UserService.getUser(userId)
       .then(response => {
         commit("SET_USER", response)
+        localStorage.setItem("userId", response.id)
+        //console.log(response.id)
+        return response
       })
       .catch(error => {
         console.log("ERROR: " + error)
