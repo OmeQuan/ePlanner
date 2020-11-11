@@ -20,7 +20,9 @@
         </p>
         <p class="mt-2">
           Invite link: <br />
-          { invite link }
+          <a :href="inviteLink" class="text-blue-400 font-light font-sans text-xs">
+            {{ inviteLink }}
+          </a>
         </p>
       </div>
       <div class="mt-4">
@@ -40,9 +42,28 @@
 
 <script>
 import { mapState } from "vuex"
+import InviteService from "@/services/InviteService"
+
 export default {
+  data() {
+    return {
+      inviteLink: "",
+      invite: {
+        eventId: "TestId",
+      },
+      test: "test",
+    }
+  },
   computed: {
     ...mapState("event", ["event"]),
+    newInviteLink() {
+      return this.inviteLink
+    },
+  },
+  created() {
+    InviteService.createInvite(this.invite).then(
+      Response => (this.inviteLink = `http://localhost:8081/invite/${Response}`)
+    )
   },
 }
 </script>
