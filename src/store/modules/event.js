@@ -45,19 +45,15 @@ const actions = {
   },
   createEvent({ rootState }, event) {
     console.log(rootState)
-    EventService.createEvent(event).catch(error => {
-      console.log("ERROR: " + error)
-    })
-  },
-  addEvent({ rootState }, payload) {
-    console.log(rootState)
-    EventService.addEvent(payload).catch(error => {
-      console.log("ERROR: " + error)
-    })
+    EventService.createEvent(event)
+      .then(response => EventService.getEvent(response).then(response => EventService.addEvent(response)))
+      .catch(error => {
+        console.log("ERROR: " + error)
+      })
   },
   bindEvents: firestoreAction(({ bindFirestoreRef }, userId) => {
     console.log(userId) //TODO: get only user events
-    return bindFirestoreRef("events", firestore.collection(`events`))
+    return bindFirestoreRef("events", firestore.collection(`users/${userId}/events`))
   }),
 }
 

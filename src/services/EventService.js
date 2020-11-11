@@ -25,10 +25,21 @@ export default {
       })
   },
   createEvent(event) {
-    //console.log(event)
-    return firestore.collection(`events`).add(event)
+    return firestore
+      .collection(`events`)
+      .add(event)
+      .then(function(docRef) {
+        return docRef.id
+      })
+      .catch(function(error) {
+        console.log("ERROR: " + error)
+      })
   },
   addEvent(payload) {
-    return firestore.collection(`users/${payload.guestId}/events`).add(payload.event)
+    console.log(payload)
+    return firestore
+      .collection(`users/${localStorage.getItem("userId")}/events`)
+      .doc(payload.id)
+      .set(payload)
   },
 }

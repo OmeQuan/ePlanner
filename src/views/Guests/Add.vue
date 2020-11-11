@@ -45,14 +45,13 @@
 <script>
 import { mapState } from "vuex"
 import InviteService from "@/services/InviteService"
+import { Timestamp } from "../../firebase"
 
 export default {
   data() {
     return {
-      inviteLink: "bruh",
-      invite: {
-        eventId: "TestId",
-      },
+      inviteLink: "Loading...",
+      invite: {},
     }
   },
   methods: {
@@ -68,6 +67,8 @@ export default {
     },
   },
   created() {
+    this.invite.createdAt = Timestamp.now()
+    this.invite.eventId = this.event.id
     InviteService.createInvite(this.invite).then(
       Response => (this.inviteLink = `http://localhost:8081/invite/${Response}`)
     )
