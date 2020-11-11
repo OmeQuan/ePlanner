@@ -3,7 +3,7 @@
     <div class="w-full flex flex-col ">
       <h1 class="text-4xl font-semibold mb-8">Events</h1>
       <template v-for="event in events">
-        <router-link :key="event.eventId" :to="{ name: 'event.index', params: { id: event.eventId } }">
+        <router-link :key="event.eventId" :to="{ name: 'event.index', params: { id: event.id } }">
           <EventCard :event="event" class="mb-4 border-b border-card pb-4" />
         </router-link>
       </template>
@@ -28,7 +28,7 @@ export default {
   },
   async created() {
     await this.$store.dispatch("event/bindEvents", "4uLzNcL4zTWdVIKJuNy0")
-    this.$store.dispatch("user/fetchUser")
+    this.$store.dispatch("user/fetchUser", "4uLzNcL4zTWdVIKJuNy0")
   },
   computed: {
     ...mapState("event", ["events"]),

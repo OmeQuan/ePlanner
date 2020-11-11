@@ -25,7 +25,7 @@ export default {
       })
   },
   createEvent(event) {
-    console.log(event)
+    //console.log(event)
     return firestore.collection(`events`).add(event)
   },
   addEvent(payload) {

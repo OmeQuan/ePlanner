@@ -1,15 +1,10 @@
 <template>
-  <div class="flex pb-2 mb-8 flex-col ">
-    <label
-      class="text-cream text-sm w-20"
-      v-if="label"
-      :for="label"
-      :class="{ 'text-gray-600': value }"
-    >
+  <div class="flex pb-2 mb-2 flex-col ">
+    <label class="text-cream text-sm w-20" v-if="label" :for="label" :class="{ 'text-gray-600': value }">
       {{ label }}
     </label>
     <input
-      class="bg-transparent text-cream text-lg placeholder-gray-600 w-64"
+      class="bg-transparent text-cream text-lg placeholder-gray-600"
       @input="updateValue"
       v-bind="$attrs"
       v-on="listeners"
@@ -25,7 +20,7 @@ export default {
   props: {
     label: {
       type: String,
-      default: '',
+      default: "",
     },
     value: [String, Number],
   },
@@ -39,7 +34,7 @@ export default {
   },
   methods: {
     updateValue(event) {
-      this.$emit('input', event.target.value)
+      this.$emit("input", event.target.value)
     },
   },
 }

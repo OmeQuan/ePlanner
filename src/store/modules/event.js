@@ -39,6 +39,7 @@ const actions = {
   fetchEvent({ commit }, id) {
     return EventService.getEvent(id).then(response => {
       commit("SET_EVENT", response)
+      localStorage.setItem("eventId", response.id)
       return response
     })
   },
@@ -55,7 +56,8 @@ const actions = {
     })
   },
   bindEvents: firestoreAction(({ bindFirestoreRef }, userId) => {
-    return bindFirestoreRef("events", firestore.collection(`users/${userId}/events`))
+    console.log(userId)
+    return bindFirestoreRef("events", firestore.collection(`events`))
   }),
 }
 

@@ -3,38 +3,61 @@
     <div class="fixed top-0 z-0">
       <div class="w-screen h-32 backimg"></div>
       <div class="w-screen bg-background h-6 rounded-t-full -mt-6"></div>
-      <router-link :to="{ name: 'events.edit' }" v-if="user.id == event.adminId">
-        <BaseIcon name="edit" strokeWidht="2" class="fixed right-0 -mt-2 mr-12"
-      /></router-link>
-      <router-link :to="{ name: 'index' }">
-        <BaseIcon name="x" strokeWidht="2" class="fixed right-0 -mt-2 mr-4"
-      /></router-link>
+      <div class="flex">
+        <router-link :to="{ name: 'events.edit' }" v-if="user.id == event.adminId">
+          <BaseIcon name="edit" strokeWidht="2" class="fixed right-0 -mt-2 mr-12"
+        /></router-link>
+        <router-link :to="{ name: 'index' }">
+          <BaseIcon name="x" strokeWidht="2" class="fixed right-0 -mt-2 mr-4"
+        /></router-link>
+      </div>
     </div>
     <div class="container mx-auto px-6 mt-24 z-10">
+      <div class="flex">
+        <p class="rounded-lg bg-grey-500 text-sm font-bold px-2 opacity-75 text-creme">
+          {{ event.eventDate }}
+        </p>
+      </div>
       <h1 class="text-4xl font-semibold">{{ event.title }}</h1>
-      <h3 class="text-opacity-50 text-creme text-sm font-thin">{{ date }}</h3>
+      <h3 class="text-creme text-base font thin text-opacity-50">By:</h3>
+      <h3 class=" text-creme text-base font-thin">{{ event.host }}</h3>
+
       <div class="mt-4">
-        <h3 class="text-opacity-50 text-creme text-sm font-thin">Location</h3>
-        <h2 class="text-creme">{{ event.location }}</h2>
+        <h3></h3>
+        <h3 class="text-opacity-50 text-creme text-base font-light">Details:</h3>
+        <div class="flex flex-col">
+          <div class=" mt-2 flex-row flex">
+            <BaseIcon name="clock" strokeWidht="1" />
+            <h3 class="ml-2">{{ event.startTime }} - {{ event.endTime }}</h3>
+          </div>
+          <div class="mt-2 flex flex-row">
+            <BaseIcon name="map-pin" strokeWidht="1" />
+            <h3 class="ml-2">{{ event.location }}</h3>
+          </div>
+        </div>
       </div>
       <div class="mt-4">
         <h3 class="text-opacity-50 text-creme text-sm font-thin">Info</h3>
         <h2 class="text-creme">{{ event.info }}</h2>
       </div>
       <div class="mt-4">
-        <h3 class="text-opacity-50 text-creme text-sm font-thin">Time</h3>
-        <h2 class="text-creme">{{ time }}</h2>
-      </div>
-      <div class="mt-4">
-        <h3 class="text-opacity-50 text-creme text-sm font-thin">Host</h3>
-        <h2 class="text-creme">{{ event.host }}</h2>
+        <h3 class="text-opacity-50 text-creme text-sm font-thin">Task:</h3>
+        <h2 class="text-creme">{{ event.eventTask }}</h2>
       </div>
       <br />
-      <router-link :to="{ name: 'event.guests' }">
-        <button class="bg-btn-blue hover:bg-blue-700  py-2 px-4 rounded">
-          Guest list <BaseIcon name="users" strokeWidht="2" class="ml-2" />
-        </button>
-      </router-link>
+      <div class="flex ">
+        <div class="flex-grow">
+          <button class=" bg-btn-green hover:bg-blue-700  py-2 px-4 rounded">
+            Status <BaseIcon name="check" strokeWidht="2" class="ml-2" />
+          </button>
+        </div>
+
+        <div class="flex-grow text-right">
+          <router-link :to="{ name: 'event.guests' }" class="">
+            <h3 class="py-2 px-4">Guestlist <BaseIcon name="chevron-right" strokeWidht="2" class="ml-2" /></h3>
+          </router-link>
+        </div>
+      </div>
     </div>
     <div></div>
   </div>
@@ -50,26 +73,8 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {
-      date: this.computedDate(),
-      time: this.computedTime(),
-    }
-  },
   computed: {
     ...mapState("user", ["user"]),
-  },
-  methods: {
-    computedDate() {
-      var resp = this.event.eventDate.split("T", 2)
-      var date = resp[0]
-      return date
-    },
-    computedTime() {
-      var resp = this.event.eventDate.split("T", 2)
-      var time = resp[1]
-      return time
-    },
   },
 }
 </script>
