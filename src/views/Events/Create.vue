@@ -69,7 +69,7 @@ a<template>
             </button>
           </router-link>
           <button class="bg-btn-blue hover:bg-blue-700  py-2 px-4 rounded" type="submit">
-            Next <BaseIcon name="arrow-right" strokeWidth="2" />
+            Done <BaseIcon name="arrow-right" strokeWidth="2" />
           </button>
         </div>
       </form>
@@ -141,17 +141,12 @@ export default {
       if (!this.$v.$invalid) {
         this.event.createdAt = Timestamp.now()
         this.$store.dispatch("event/createEvent", this.event)
+        this.$router.push("/")
         //this.$store.dispatch("event/testEvent", { ...this.event, createdAt: Timestamp.now() })
         //this.$store.dispatch("event/addEvent", { ...this.payload, event: this.event, guestId: this.user.userId })
       } else {
         console.log("Nie goed")
       }
-    },
-    getAdminId() {
-      //TODO:
-    },
-    getHostName() {
-      //TODO
     },
   },
 }
