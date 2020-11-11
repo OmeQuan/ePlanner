@@ -1,0 +1,14 @@
+<svg width="0" height="0" class="hidden">
+  <symbol viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" id="0.25">
+    <path d="M40.97 7.03a24 24 0 0 0-33.94 0L24 24 40.97 7.03z" fill="#fff"></path>
+  </symbol>
+  <symbol viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" id="0.5">
+    <path d="M40.97 7.03A24 24 0 0 0 7.03 40.97L24 24 40.97 7.03z" fill="#fff"></path>
+  </symbol>
+  <symbol viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" id="0.75">
+    <path d="M40.97 7.03a24 24 0 1 0 0 33.94L24 24 40.97 7.03z" fill="#fff"></path>
+  </symbol>
+  <symbol viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" id="1">
+    <circle cx="24" cy="24" r="24" fill="#fff"></circle>
+  </symbol>
+</svg>
