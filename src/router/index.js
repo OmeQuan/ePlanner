@@ -68,21 +68,9 @@ const routes = [
     },
   },
   {
-    path: "/events/:id/guests/add",
+    path: "/events/:id/invite",
     name: "event.guests.add",
     component: () => import("../views/Guests/Add.vue"),
-    props: true,
-    beforeEnter(routeTo, routeFrom, next) {
-      store
-        .dispatch("friend/fetchFriends")
-        .then(friends => {
-          routeTo.params.friends = friends
-          next()
-        })
-        .catch(error => {
-          console.log("ERROR: " + error)
-        })
-    },
   },
 ]
 

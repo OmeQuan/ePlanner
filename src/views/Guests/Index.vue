@@ -29,10 +29,10 @@
           </tr>
         </table>
       </div>
-      <div class="mt-4">
+      <div class="mt-4 fixed bottom-0 right-0 pr-6 pb-6">
         <router-link :to="{ name: 'event.guests.add', params: { id: event.id } }">
           <button class="bg-btn-blue hover:bg-blue-700  py-2 px-4 rounded">
-            Add guests <BaseIcon name="plus" strokeWidth="2" class="ml-2" />
+            New invite <BaseIcon name="send" strokeWidth="2" class="ml-2" />
           </button>
         </router-link>
       </div>
