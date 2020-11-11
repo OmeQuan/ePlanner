@@ -30,7 +30,6 @@ const actions = {
     EventService.getEvents()
       .then(response => {
         commit("SET_EVENTS", response)
-        //console.log(state.events)
       })
       .catch(error => {
         console.log("ERROR " + error)

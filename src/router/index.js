@@ -54,6 +54,24 @@ const routes = [
     },
   },
   {
+    path: "/invite/:id",
+    name: "invite.index",
+    meta: { userRequired: true },
+    component: () => import("../views/Invites/Index.vue"),
+    props: true,
+    beforeEnter(routeTo, routeFrom, next) {
+      store
+        .dispatch("invite/fetchInvite", routeTo.params.id)
+        .then(invite => {
+          routeTo.params.invite = invite
+          next()
+        })
+        .catch(error => {
+          console.log("ERROR: " + error)
+        })
+    },
+  },
+  {
     path: "/events/:id/guests",
     name: "event.guests",
     meta: { userRequired: true, eventRequired: true },

@@ -13,4 +13,17 @@ export default {
         console.log("ERROR: " + error)
       })
   },
+  getInvite(inviteId) {
+    return firestore
+      .collection(`invites`)
+      .doc(inviteId)
+      .get()
+      .then(doc => {
+        if (doc.exists) {
+          return { ...doc.data() }
+        } else {
+          console.log("Invite not found, id: " + inviteId)
+        }
+      })
+  },
 }
