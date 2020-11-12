@@ -27,8 +27,8 @@ export default {
     EventCard,
   },
   async created() {
-    await this.$store.dispatch("event/bindEvents", "4uLzNcL4zTWdVIKJuNy0")
-    this.$store.dispatch("user/fetchUser", "4uLzNcL4zTWdVIKJuNy0")
+    await this.$store.dispatch("event/bindEvents", "SYDdZ6fziAzhpAsani1M")
+    this.$store.dispatch("user/fetchUser", "SYDdZ6fziAzhpAsani1M")
   },
   computed: {
     ...mapState("event", ["events"]),

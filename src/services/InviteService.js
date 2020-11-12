@@ -26,4 +26,10 @@ export default {
         }
       })
   },
+  responseToInvite(userId, event) {
+    return firestore
+      .collection(`users/${userId}/events`)
+      .doc(event.id)
+      .set(event)
+  },
 }
