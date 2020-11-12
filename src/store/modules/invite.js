@@ -23,6 +23,12 @@ const actions = {
         console.log("ERROR: " + error)
       })
   },
+  responseToInvite({ rootState }, event) {
+    console.log(rootState.user.user.id)
+    InviteService.responseToInvite(rootState.user.user.id, event).catch(error => {
+      console.log("ERROR: " + error)
+    })
+  },
 }
 
 export default {

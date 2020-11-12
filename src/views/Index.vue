@@ -23,12 +23,18 @@ import EventCard from "@/components/Events/EventCard"
 
 export default {
   name: "Index",
+  data() {
+    return {
+      userId1: "4uLzNcL4zTWdVIKJuNy0",
+      userId2: "SYDdZ6fziAzhpAsani1M",
+    }
+  },
   components: {
     EventCard,
   },
   async created() {
-    await this.$store.dispatch("event/bindEvents", "4uLzNcL4zTWdVIKJuNy0")
-    this.$store.dispatch("user/fetchUser", "4uLzNcL4zTWdVIKJuNy0")
+    await this.$store.dispatch("event/bindEvents", this.userId2)
+    this.$store.dispatch("user/fetchUser", this.userId2)
   },
   computed: {
     ...mapState("event", ["events"]),
