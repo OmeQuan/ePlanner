@@ -52,7 +52,7 @@ const actions = {
   },
   bindEvents: firestoreAction(({ bindFirestoreRef }, userId) => {
     console.log(userId) //TODO: get only user events
-    return bindFirestoreRef("events", firestore.collection(`users/${userId}/events`))
+    return bindFirestoreRef("events", firestore.collection(`users/${userId}/events`).orderBy("eventDate"))
   }),
 }
 
