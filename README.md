@@ -1,39 +1,36 @@
 # ePlanner
 
-This repository contains the code for the ePlanner app.
+A Progressive Web App platform where friends can plan events together.
 
-## Getting Started
-These instructions will get you a copy of the project up and running on your development enviroment.
+## Description
 
-### Prerequisites
+ePlanner is an app made in a span of 6 weeks. The idea of the app is to make the planning of an evening with friends easier. In those 6 weeks I delivered an MVP.
 
-Make sure you have installed all of the following prerequisites on your development enviroment:
-- git
-- npm
+## App Feel
 
-### Setup
+<img src="demo/eplanner_home.png" alt="home" width="500px" >
 
-The recommended way to setup this project is to use git to directly clone this repository to your development enviroment:
+## Project setup
 ```
-$ git clone https://github.com/OmeQuan/eplanner.git
+npm install
 ```
-You could also download it as a ZIP file and unpack it.
 
-Next, navigate to the current folder:
+### Compiles and hot-reloads for development
 ```
-$ cd eplanner
+npm run serve
 ```
-Install the npm packages:
-```
-$ npm install
-```
-Spin up the project at localhost:
-```
-$ npm serve
-```
-That's it! The project should be live at `http://localhost:8080`
 
-## Authors
+### Compiles and minifies for production
+```
+npm run build
+```
 
-- **Coen Breg** - Developer
+### Run your unit tests
+```
+npm run test:unit
+```
 
+### Lints and fixes files
+```
+npm run lint
+```
